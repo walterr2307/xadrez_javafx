@@ -27,8 +27,8 @@ public abstract class Peca {
         this.i = i;
         this.j = j;
         this.cor = cor;
-        this.img = definirImagem();
         this.btn = definirBotao();
+        this.img = definirImagem();
         btn.setOnAction(e -> mover());
         btn.setOnMouseEntered(e -> colorir());
         btn.setOnMouseExited(e -> descolorir());
@@ -62,13 +62,7 @@ public abstract class Peca {
     protected abstract String definirTipoPeca();
 
     protected Button definirBotao() {
-        Button btn = new Button();
-        btn.setPrefSize(largura, largura);
-        btn.setLayoutX(i * largura);
-        btn.setLayoutY(j * largura);
-        btn.setOpacity(0f);
-        root.getChildren().add(btn);
-        return btn;
+        return tabuleiro.getBotao(i, j);
     }
 
     public abstract void verificarPassosDisponiveis();
